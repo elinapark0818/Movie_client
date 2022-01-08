@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function ListItem({ id, title, content, rating }) {
+export default function ListItem({ id, title, content, rating, handleClick }) {
   return (
-    <li style={{ display: "flex" }}>
+    <li style={{ display: "flex" }} onClick={() => handleClick(id)}>
       <div
         style={{
           backgroundColor: "red",

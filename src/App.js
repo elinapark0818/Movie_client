@@ -32,22 +32,32 @@ const Right = styled.div`
   border: grey 1px solid;
 `;
 
-function App() {
-  return (
-    <div className="app-container">
-      <Head className="header">
-        <Header />
-      </Head>
-      <Body className="body">
-        <Left>
-          <CurrentMovie />
-        </Left>
-        <Right>
-          <MovieList />
-        </Right>
-      </Body>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick = (id) => {
+    console.log(id, "Clicked ListItem!");
+    this.setState({ currentMovie: id });
+  };
+  render() {
+    return (
+      <div className="app-container">
+        <Head className="header">
+          <Header />
+        </Head>
+        <Body className="body">
+          <Left>
+            <CurrentMovie />
+          </Left>
+          <Right>
+            <MovieList handleClick={this.handleClick} />
+          </Right>
+        </Body>
+      </div>
+    );
+  }
 }
 
 export default App;
